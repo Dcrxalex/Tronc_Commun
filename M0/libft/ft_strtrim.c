@@ -1,28 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/10 11:01:07 by decro             #+#    #+#             */
-/*   Updated: 2026/04/10 14:03:12 by decro            ###   ########.fr       */
+/*   Created: 2026/04/09 14:16:30 by decro             #+#    #+#             */
+/*   Updated: 2026/04/11 15:38:24 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	is_set(const char c, const char *set)
 {
-	unsigned char *ch;
-	size_t	i;
+	int	i;
 
-	ch = (unsigned char *)b;
 	i = 0;
-	while (i < len)
+	while (set[i])
 	{
-		ch[i] = (unsigned char)c;
+		if (set[i] == c)
+			return (1);
 		i++;
 	}
-	return (b);
+	return (0);
 }
+
+char	*ft_strtrim(const char *s1, const char *set)
+{
+	int	start;
+	int	end;
+	char	*res;
+
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (is_set(s1[start], set) && s1[start])
+		start++;
+	while (is_set(s1[end], set) && s1[end])
+		end--;
+	res = ft_substr(s1, start, end - start + 1);
+	return (res);
+}	
