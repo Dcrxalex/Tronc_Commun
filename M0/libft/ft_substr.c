@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:37:49 by decro             #+#    #+#             */
-/*   Updated: 2026/04/11 15:17:42 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/13 12:04:34 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char	*res;
 	size_t	i;
 
-	max_len = ft_strlen(s);
 	if (!s)
 		return (NULL);
+	max_len = ft_strlen(s);
 	if (start > max_len)
 		return (ft_strdup(""));
-	if (len > max_len + start)
-		len = max_len + start;
+	if (len > max_len - start)
+		len = max_len - start;
 	res = ft_calloc(len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
