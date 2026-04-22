@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 14:16:30 by decro             #+#    #+#             */
-/*   Updated: 2026/04/11 15:38:24 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:58:38 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	is_set(const char c, const char *set)
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	int	start;
-	int	end;
+	int		start;
+	int		end;
 	char	*res;
 
 	start = 0;
@@ -38,6 +38,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 		start++;
 	while (is_set(s1[end], set) && s1[end])
 		end--;
-	res = ft_substr(s1, start, end - start + 1);
+	res = ft_substr(s1, start, (end - start + 1));
 	return (res);
-}	
+}

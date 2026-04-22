@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:45:44 by decro             #+#    #+#             */
-/*   Updated: 2026/04/09 10:51:56 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:57:00 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*res;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: aldecroi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:44:10 by aldecroi          #+#    #+#             */
-/*   Updated: 2026/04/07 10:46:08 by aldecroi         ###   ########.fr       */
+/*   Updated: 2026/04/22 17:59:20 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	while (src[i])
 		i++;
 	return (i);
-}	
+}

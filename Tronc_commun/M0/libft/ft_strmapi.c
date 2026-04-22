@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 14:31:54 by decro             #+#    #+#             */
-/*   Updated: 2026/04/11 15:20:14 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:57:17 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	while (s[i])
 	{
 		res[i] = (*f)(i, s[i]);
-			i++;
+		i++;
 	}
 	res[i] = 0;
 	return (res);

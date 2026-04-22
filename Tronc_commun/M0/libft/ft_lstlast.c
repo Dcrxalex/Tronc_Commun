@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/11 13:57:47 by decro             #+#    #+#             */
-/*   Updated: 2026/04/11 14:00:57 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:56:39 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstlast(t_list *lst)
 		return (lst);
 	while (lst->next)
 	{
-		lst= lst->next;
+		lst = lst->next;
 	}
 	return (lst);
 }

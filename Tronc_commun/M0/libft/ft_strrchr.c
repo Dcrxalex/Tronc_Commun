@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 10:33:20 by decro             #+#    #+#             */
-/*   Updated: 2026/04/09 10:36:32 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/22 17:56:22 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	ch;
 	char	*res;
-	int	i;
+	int		i;
 
 	i = 0;
 	ch = (char)c;
