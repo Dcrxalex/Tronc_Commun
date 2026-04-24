@@ -6,7 +6,7 @@
 /*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 14:19:07 by decro             #+#    #+#             */
-/*   Updated: 2026/04/11 15:17:12 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/24 10:28:10 by decro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	word_count(const char *s, char c)
 	return (count);
 }
 
-char	*word_dup(const char *s, char c)
+static char	*word_dup(const char *s, char c)
 {
 	int		i;
 	int		len;
