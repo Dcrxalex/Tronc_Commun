@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: decro <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 14:19:07 by decro             #+#    #+#             */
-/*   Updated: 2026/04/24 10:28:10 by decro            ###   ########.fr       */
+/*   Updated: 2026/04/28 10:41:22 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,19 @@ static char	*word_dup(const char *s, char c)
 	return (word);
 }
 
+static void	ft_free(char **res, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(res[i]);
+		i++;
+	}
+	free(res);
+}
+
 static char	**fill_word(char **res, const char *s, char c)
 {
 	int	i;
@@ -62,6 +75,11 @@ static char	**fill_word(char **res, const char *s, char c)
 		if (s[i] != c)
 		{
 			res[j++] = word_dup(&s[i], c);
+			if (!res[j - 1])
+			{
+				ft_free(res, j - 1);
+				return (NULL);
+			}
 			while (s[i] != c && s[i])
 				i++;
 		}
