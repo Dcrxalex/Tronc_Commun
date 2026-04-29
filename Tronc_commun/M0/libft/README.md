@@ -11,15 +11,15 @@
 	- strlen	-	returns the length of a string, not counting the null terminator
 	- memset	-	fills n bytes of memory with the byte value c
 	- bzero		-	fills n bytes of memory with zeros
-	- memcpy	-	copies n bytes from src to dst, undefined behavior if regions overlap
-	- memmove	-	copies n bytes from src to dst, safe even if regions overlap
+	- memcpy	-	copies n bytes from src to dst, undefined behavior if overlap
+	- memmove	-	copies n bytes from src to dst, safe even if overlap
 	- strlcpy	-	copies src into dst up to size - 1 characters, always null terminates, returns length of src
 	- strlcat	-	appends src to dst up to size total bytes, returns combined length of both strings
-	- toupper	-	converts a lowercase letter to uppercase, returns the character unchanged if not a letter
-	- tolower	-	converts an uppercase letter to lowercase, returns the character unchanged if not a letter
+	- toupper	-	converts a lowercase letter to uppercase
+	- tolower	-	converts an uppercase letter to lowercase
 	- strchr	-	returns a pointer to the first occurrence of c in s, NULL if not found
 	- strrchr	-	returns a pointer to the last occurrence of c in s, NULL if not found
-	- strncmp	-	compares up to n bytes of two strings, returns the difference of the first differing byte
+	- strncmp	-	compares up to n chars of two strings, returns the difference of the first differing char
 	- memchr	-	searches n bytes for the first occurrence of c, returns a pointer to it or NULL
 	- memcmp	-	compares n bytes of two memory regions, returns the difference of the first differing byte
 	- strnstr	-	finds the first occurrence of needle in haystack within len bytes, returns a pointer to it or NULL
