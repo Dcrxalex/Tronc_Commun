@@ -6,9 +6,20 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:11:32 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 16:45:44 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/06 23:09:38 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	is_sorted(t_stack *lst)
+{
+	while (lst && lst->next)
+	{
+		if (lst->value > lst->next->value)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
 
 int	is_valid(char **av)
 {
