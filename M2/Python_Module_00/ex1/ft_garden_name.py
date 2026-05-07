@@ -1,5 +1,4 @@
 def ft_garden_name():
-    print('Enter garden name: ')
-    NAME = input()
+    NAME = input('Enter garden name: ')
     print('Garden: ' + NAME)
     print('Status: Growing well!')

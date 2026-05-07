@@ -1,6 +1,5 @@
 def ft_plant_age():
-    print('Enter plant age in days: ')
-    age = input()
+    age = input('Enter plant age in days: ')
     if (int(age) > 60):
         print('Plant is ready to harvest!')
     else:
