@@ -6,18 +6,20 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:44:06 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 16:45:07 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/11 10:30:00 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_stack	*build_stack(char **av, int start)
+#include "push_swap.h"
+
+t_stack	*build_stack(char **av)
 {
 	t_stack *a;
 	t_stack *new_n;
 	int		i;
 
 	a = NULL;
-	i = start;
+	i = 1;
 	while (av[i])
 	{
 		new_n = create_n(ft_atol(av[i]));
@@ -37,10 +39,12 @@ t_stack	*create_n(long n)
 	if (!new)
 		return (NULL);
 	new->value = (int)n;
+	new->rank = 0;
 	new->next = NULL;
 	return (new);
 }
-t_stack	*ft_lstlast(t_stack *lst)
+
+t_stack	*ft_last(t_stack *lst)
 {
 	if (!lst)
 		return (lst);
@@ -60,7 +64,7 @@ void	add_to_bott(t_stack **lst, t_stack *new)
 		*lst = new;
 		return ;
 	}
-	last = ft_lstlast(*lst);
+	last = ft_last(*lst);
 	last->next = new;
 }
 

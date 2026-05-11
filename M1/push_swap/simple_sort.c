@@ -6,60 +6,62 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:58:58 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 18:46:56 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/11 15:34:40 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	simple_sort(t_stack **a, t_stack **b)
 {
 	int	size;
 	int	pos;
 
+	size = stack_size(*a);
+	if (size <= 1)
+		return ;
+	else if (size == 2)
+	{
+		if ((*a)->value > (*a)->next->value)
+			sa(a);
+		return ;
+	}
 	while (stack_size(*a) > 3)
 	{
-		size = stack_size(*a);
-		pos = find_max_pos(*a);
-		if (pos <= size / 2)
+		pos = find_min_pos(*a);
+		if (pos <= stack_size(*a) / 2)
 		{
 			while (pos--)
 				ra(a);
 		}
 		else
 		{
-			while (size-- - pos)
+			pos = (stack_size(*a) - pos);
+			while (pos--)
 				rra(a);
 		}
 		pb(a, b);
 	}
-	if (stack_size(*a) <= 1)
-		return ;
-	else if (stack_size(*a) == 2)
-	{
-		if ((*a)->value > (*a)->next->value)
-			sa(a);
-		return ;
-	}
-	else
-		sort_three(a);
+	sort_three(a);
 	while (*b)
-		pa(a,b);
+		pa(a, b);
 }
 
-int	find_max_pos(t_stack *lst)
+int	find_min_pos(t_stack *lst)
 {
 	int	i;
-	int	max;
+	int	min;
 	int	pos;
 
 	i = 0;
 	pos = 0;
-	max = lst->value;
+	min = lst->value;
 	while (lst)
 	{
-		if (lst->value > max)
+		if (lst->value < min)
 		{
 			pos = i;
-			max = lst->value;
+			min = lst->value;
 		}
 		i++;
 		lst = lst->next;
@@ -76,8 +78,6 @@ void	sort_three(t_stack **a)
 	first = (*a)->value;
 	sec = (*a)->next->value;
 	third = (*a)->next->next->value;
-
-
 	if (first > sec && first > third)//if a is bigger than b and a is bigger than c
 	{
 		if (sec > third)//if b is bigger than c do sa then rra				(3 2 1)
@@ -104,4 +104,45 @@ void	sort_three(t_stack **a)
 			sa(a);
 	}
 		//else if b is bigger than a do nothing				(1 2 3)
+}
+
+int	find_max_pos(t_stack *lst)
+{
+	int	i;
+	int	max;
+	int	pos;
+
+	i = 0;
+	pos = 0;
+	max = lst->value;
+	while (lst)
+	{
+		if (lst->value > max)
+		{
+			pos = i;
+			max = lst->value;
+		}
+		i++;
+		lst = lst->next;
+	}
+	return (pos);
+}
+
+void	sort_b(t_stack **a, t_stack **b)
+{
+	int	pos;
+	int	size;
+
+	pos = find_max_pos(*b);
+	size = stack_size(*b);
+	if (pos <= size / 2)
+		while (pos--)
+			rb (b);
+	else
+	{
+		pos = size - pos;
+		while (pos--)
+			rrb(b);
+	}
+	pa(a, b);
 }

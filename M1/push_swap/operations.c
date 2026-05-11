@@ -6,9 +6,11 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:46:23 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 18:25:14 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/09 11:30:15 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	swap(t_stack **lst)
 {

@@ -6,9 +6,11 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:11:32 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 23:09:38 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/11 10:32:08 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	is_sorted(t_stack *lst)
 {
@@ -27,7 +29,7 @@ int	is_valid(char **av)
 	int		j;
 	long	n;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		j = 0;
@@ -60,13 +62,27 @@ int	is_valid(char **av)
 
 int	is_dup(char **av)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	long	vi;
+	long	vj;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
+		vi = ft_atol(av[i]);
 		j = i + 1;
-
+		while (av[j])
+		{
+			vj = ft_atol(av[j]);
+			if (vi == vj)
+			{
+				write(2, "Error\n", 6);
+				return (1);
+			}
+			j++;
+		}
+		i++;
 	}
+	return (0);
 }

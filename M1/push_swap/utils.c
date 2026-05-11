@@ -6,9 +6,11 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:19:37 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/06 16:48:08 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/09 11:28:55 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 long	ft_atol(char *str)
 {
