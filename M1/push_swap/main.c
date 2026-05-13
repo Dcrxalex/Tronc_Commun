@@ -3,33 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
+/*   By: ikryvenk <ikryvenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 16:48:09 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/11 10:58:20 by aldecro          ###   ########.fr       */
+/*   Created: 2026/05/05 12:37:26 by ikryvenk          #+#    #+#             */
+/*   Updated: 2026/05/07 15:26:58 by ikryvenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+t_flags	*flags_malloc(t_flags *flags)
 {
-	t_stack	*a;
-	t_stack	*b;
+	flags = malloc(sizeof(t_flags));
+	if (!flags)
+		ft_error();
+	return (flags);
+}
 
-	if (ac < 2)
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_flags	*flags;
+
+	stack_a = NULL;
+	flags = NULL;
+	flags = flags_malloc(flags);
+	if (argc == 1)
+		ft_error ();
+	ft_sort_create(argv + 1, &stack_a, &flags);
+	if (is_sorted(stack_a))
 		return (0);
-	if (!is_valid(av + 1) || is_dup(av + 1))
-		return (1);
-	a = build_stack(av + 1);
-	b = NULL;
-	if (!is_sorted(a))
-	{
-		if (stack_size(a) <= 5)
-			simple_sort(&a, &b);
-		else
-			medium_sort(&a, &b);
-	}
-	free_stack(a);
+	sortit(&stack_a, &flags);
+	ft_lstclear(&stack_a);
+	free(flags);
 	return (0);
 }
