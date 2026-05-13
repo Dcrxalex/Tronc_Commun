@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations_ab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 16:48:09 by aldecro           #+#    #+#             */
+/*   Created: 2026/05/11 10:58:20 by aldecro           #+#    #+#             */
 /*   Updated: 2026/05/11 10:58:20 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	sa(t_stack **lst)
 {
-	t_stack	*a;
-	t_stack	*b;
+	swap(lst);
+	write(1, "sa\n", 3);
+}
 
-	if (ac < 2)
-		return (0);
-	if (!is_valid(av + 1) || is_dup(av + 1))
-		return (1);
-	a = build_stack(av + 1);
-	b = NULL;
-	if (!is_sorted(a))
-	{
-		if (stack_size(a) <= 5)
-			simple_sort(&a, &b);
-		else
-			medium_sort(&a, &b);
-	}
-	free_stack(a);
-	return (0);
+void	sb(t_stack **lst)
+{
+	swap(lst);
+	write(1, "sb\n", 3);
+}
+
+void	ra(t_stack **lst)
+{
+	rotate(lst);
+	write(1, "ra\n", 3);
+}
+
+void	rb(t_stack **lst)
+{
+	rotate(lst);
+	write(1, "rb\n", 3);
 }

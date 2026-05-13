@@ -14,18 +14,18 @@
 
 t_stack	*build_stack(char **av)
 {
-	t_stack *a;
-	t_stack *new_n;
+	t_stack	*a;
+	t_stack	*node;
 	int		i;
 
 	a = NULL;
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
-		new_n = create_n(ft_atol(av[i]));
-		if (!new_n)
+		node = create_n(ft_atol(av[i]));
+		if (!node)
 			return (NULL);
-		add_to_bott(&a, new_n);
+		add_to_bott(&a, node);
 		i++;
 	}
 	return (a);

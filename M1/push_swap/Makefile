@@ -7,6 +7,8 @@ SRCS = main.c \
        validate.c \
        stack_utils.c \
        operations.c \
+       operations_ab.c \
+       operations_combo.c \
        simple_sort.c \
        medium_sort.c \
        utils.c

@@ -6,55 +6,49 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:11:32 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/11 10:32:08 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/12 21:41:59 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack *lst)
+static int	error(void)
 {
-	while (lst && lst->next)
+	write(2, "Error\n", 6);
+	return (0);
+}
+
+static int	is_valid_arg(char *arg)
+{
+	int		j;
+	long	n;
+
+	j = 0;
+	if (arg[j] == '+' || arg[j] == '-')
+		j++;
+	if (!arg[j])
+		return (error());	//not doing write here saves 3 lines
+	while (arg[j])
 	{
-		if (lst->value > lst->next->value)
-			return (0);
-		lst = lst->next;
+		if (arg[j] < '0' || arg[j] > '9')
+			return (error());
+		j++;
 	}
+	n = ft_atol(arg);		//doing this afer "if (arg[j] < '0' || arg[j] > '9')" to take plus/minus sign separately?
+	if (n < -2147483648 || n > 2147483647)
+		return (error());
 	return (1);
 }
 
 int	is_valid(char **av)
 {
-	int		i;
-	int		j;
-	long	n;
+	int	i;
 
 	i = 0;
 	while (av[i])
 	{
-		j = 0;
-		if (av[i][j] == '+' || av[i][j] == '-')
-			j++;
-		if (!av[i][j])
-		{
-			write(2, "Error\n", 6);
+		if (!is_valid_arg(av[i]))
 			return (0);
-		}
-		while (av[i][j])
-		{
-			if (av[i][j] < '0' || av[i][j] > '9')
-			{
-				write(2, "Error\n", 6);
-				return (0);
-			}
-			j++;
-		}
-		n = ft_atol(av[i]);
-		if (n > 2147483647 || n < -2147483648)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
 		i++;
 	}
 	return (1);
@@ -65,7 +59,6 @@ int	is_dup(char **av)
 	int		i;
 	int		j;
 	long	vi;
-	long	vj;
 
 	i = 0;
 	while (av[i])
@@ -74,10 +67,9 @@ int	is_dup(char **av)
 		j = i + 1;
 		while (av[j])
 		{
-			vj = ft_atol(av[j]);
-			if (vi == vj)
+			if (vi == ft_atol(av[j]))
 			{
-				write(2, "Error\n", 6);
+				error();
 				return (1);
 			}
 			j++;
@@ -85,4 +77,15 @@ int	is_dup(char **av)
 		i++;
 	}
 	return (0);
+}
+
+int	is_sorted(t_stack *lst)
+{
+	while (lst && lst->next)
+	{
+		if (lst->value > lst->next->value)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
 }
