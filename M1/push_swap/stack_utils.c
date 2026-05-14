@@ -6,7 +6,7 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:44:06 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/11 10:30:00 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/14 16:43:37 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack	*build_stack(char **av)
 
 t_stack	*create_n(long n)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	new = malloc(sizeof(t_stack));
 	if (!new)

@@ -6,7 +6,7 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:58:58 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/12 21:56:49 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/14 16:43:25 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	find_min_pos(t_stack *lst)
 {
-	int	i;
-	int	min;
 	int	pos;
+	int	min;
+	int	i;
 
-	i = 0;
 	pos = 0;
+	i = 0;
 	min = lst->value;
 	while (lst)
 	{
@@ -37,8 +37,8 @@ int	find_min_pos(t_stack *lst)
 int	find_max_pos(t_stack *lst)
 {
 	int	i;
-	int	max;
 	int	pos;
+	int	max;
 
 	i = 0;
 	pos = 0;
@@ -55,25 +55,6 @@ int	find_max_pos(t_stack *lst)
 	}
 	return (pos);
 }
-/*
-int	find_max_pos(t_stack *lst)
-{
-	int	max;
-	int	pos;
-
-	pos = 0;
-	max = lst->value;
-	while (lst)
-	{
-		if (lst->value > max)
-		{
-			pos++;
-			max = lst->value;
-		}
-		lst = lst->next;
-	}
-	return (pos);
-}*/
 
 void	sort_three(t_stack **a)
 {
@@ -88,18 +69,18 @@ void	sort_three(t_stack **a)
 		sa(a);
 	else if (top > mid && top > bot && mid < bot)
 		ra(a);
-	else if (top > mid && top > bot && mid > bot)
+	else if (mid > top && top > bot)
+		rra(a);
+	else if (top > mid && mid > bot)
 	{
 		sa(a);
 		rra(a);
 	}
-	else if (top < mid && top < bot && mid > bot)
+	else if (mid > bot && bot > top)
 	{
-		sa(a);
-		ra(a);
-	}
-	else if (top < mid && top > bot)
 		rra(a);
+		sa(a);
+	}
 }
 
 void	sort_b(t_stack **a, t_stack **b)
@@ -128,7 +109,7 @@ void	simple_sort(t_stack **a, t_stack **b)
 	size = stack_size(*a);
 	if (size <= 1)
 		return ;
-	if (size == 2)
+	else if (size == 2)
 	{
 		if ((*a)->value > (*a)->next->value)
 			sa(a);

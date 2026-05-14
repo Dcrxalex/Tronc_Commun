@@ -6,7 +6,7 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 14:11:32 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/12 21:41:59 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/14 16:44:46 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static int	is_valid_arg(char *arg)
 	if (arg[j] == '+' || arg[j] == '-')
 		j++;
 	if (!arg[j])
-		return (error());	//not doing write here saves 3 lines
+		return (error());
 	while (arg[j])
 	{
 		if (arg[j] < '0' || arg[j] > '9')
 			return (error());
 		j++;
 	}
-	n = ft_atol(arg);		//doing this afer "if (arg[j] < '0' || arg[j] > '9')" to take plus/minus sign separately?
+	n = ft_atol(arg);
 	if (n < -2147483648 || n > 2147483647)
 		return (error());
 	return (1);

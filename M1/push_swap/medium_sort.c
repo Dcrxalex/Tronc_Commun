@@ -6,28 +6,17 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 14:33:30 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/11 10:58:20 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/14 15:51:48 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	compute_cost(int i, int size)
+static int	compute_cost(int pos, int size)
 {
-	if (i <= size / 2)
-		return (i);
-	return (size - i);
-}
-
-static int	chunk_has_nodes(t_stack *lst, int threshold, int chunk_size)
-{
-	while (lst)
-	{
-		if (lst->rank >= threshold - chunk_size && lst->rank < threshold)
-			return (1);
-		lst = lst->next;
-	}
-	return (0);
+	if (pos <= size / 2)
+		return (pos);
+	return (size - pos);
 }
 
 int	find_best_chunk(t_stack *lst, int threshold, int chunk_size)
@@ -35,6 +24,7 @@ int	find_best_chunk(t_stack *lst, int threshold, int chunk_size)
 	int	i;
 	int	best_pos;
 	int	best_cost;
+	int	cost;
 	int	size;
 
 	i = 0;
@@ -45,9 +35,10 @@ int	find_best_chunk(t_stack *lst, int threshold, int chunk_size)
 	{
 		if (lst->rank >= threshold - chunk_size && lst->rank < threshold)
 		{
-			if (compute_cost(i, size) < best_cost)
+			cost = compute_cost(i, size);
+			if (cost < best_cost)
 			{
-				best_cost = compute_cost(i, size);
+				best_cost = cost;
 				best_pos = i;
 			}
 		}
@@ -61,11 +52,12 @@ static void	push_chunk(t_stack **a, t_stack **b, int threshold, int chunk_size)
 {
 	int	pos;
 
-	while (chunk_has_nodes(*a, threshold, chunk_size))
+	pos = find_best_chunk(*a, threshold, chunk_size);
+	while (pos != -1)
 	{
-		pos = find_best_chunk(*a, threshold, chunk_size);
 		rotate_to_pos(a, pos);
 		pb(a, b);
+		pos = find_best_chunk(*a, threshold, chunk_size);
 	}
 }
 
