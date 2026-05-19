@@ -4,6 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = main.c \
+       choose_algo.c \
        validate.c \
        stack_utils.c \
        operations.c \

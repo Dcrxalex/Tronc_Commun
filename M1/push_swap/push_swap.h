@@ -23,6 +23,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_flags
+{
+	int	simple;
+	int	medium;
+	int	is_complex;
+	int	adaptive;
+	int	bench;
+}	t_flags;
+
 /* stack utils */
 t_stack	*build_stack(char **av);
 t_stack	*create_n(long n);
@@ -61,6 +70,10 @@ int		find_min_pos(t_stack *lst);
 int		find_max_pos(t_stack *lst);
 void	sort_b(t_stack **a, t_stack **b);
 int		find_best_chunk(t_stack *lst, int threshold, int chunk_size);
+
+/* algo selection */
+int		parse_flags(char **av, t_flags *flags);
+void	sortit(t_stack **a, t_stack **b, t_flags *flags);
 
 /* utils */
 long	ft_atol(char *str);

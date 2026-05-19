@@ -6,7 +6,7 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 14:33:30 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/14 15:51:48 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/18 15:26:06 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ void	medium_sort(t_stack **a, t_stack **b)
 	int	chunk_size;
 	int	threshold;
 
-	if (stack_size(*a) <= 1)
-		return ;
 	set_rank(*a);
 	chunk_size = ft_sqrt(stack_size(*a));
 	threshold = chunk_size;

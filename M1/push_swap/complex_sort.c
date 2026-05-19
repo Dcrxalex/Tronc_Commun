@@ -1,40 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 16:48:09 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/18 13:54:47 by aldecro          ###   ########.fr       */
+/*   Created: 2026/05/15 00:00:00 by aldecro           #+#    #+#             */
+/*   Updated: 2026/05/17 15:51:00 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+void	phase_1(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_flags	flags;
-	int		start;
-
-	if (ac < 2)
-		return (0);
-	start = parse_flags(av + 1, &flags);
-	if (!is_valid(av + 1 + start) || is_dup(av + 1 + start))
-		return (1);
-	a = build_stack(av + 1 + start);
-	b = NULL;
-	if (a && !is_sorted(a))
-		sortit(&a, &b, &flags);
-	b = a;
-	while (b)
-	{
-		printf("%d\n", b->value);
-		b = b->next;
-	}
-	free_stack(a);
-	return (0);
+	while (stack_size(*a) >= 3)
+		pb(a, b);
+	sort_three(a);
 }

@@ -6,7 +6,7 @@
 /*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:58:58 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/14 16:43:25 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/15 21:48:16 by aldecro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,9 @@ void	sort_b(t_stack **a, t_stack **b)
 
 void	simple_sort(t_stack **a, t_stack **b)
 {
-	int	size;
-
-	size = stack_size(*a);
-	if (size <= 1)
+	if (stack_size(*a) <= 1)
 		return ;
-	else if (size == 2)
+	else if (stack_size(*a) == 2)
 	{
 		if ((*a)->value > (*a)->next->value)
 			sa(a);
