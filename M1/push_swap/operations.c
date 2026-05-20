@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
+/*   By: aldecroi <aldecroi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 16:46:23 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/11 10:58:20 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/13 10:36:19 by aldecroi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rotate(t_stack **lst)
 	tmp = *lst;
 	*lst = (*lst)->next;
 	tmp->next = NULL;
-	last = ft_last(*lst);
+	last = ft_lstlast(*lst);
 	last->next = tmp;
 }
 
@@ -39,7 +39,7 @@ void	rev_rotate(t_stack **lst)
 	t_stack	*last;
 	t_stack	*sec_last;
 
-	last = ft_last(*lst);
+	last = ft_lstlast(*lst);
 	sec_last = *lst;
 	while (sec_last->next->next != NULL)
 		sec_last = sec_last->next;
@@ -48,18 +48,7 @@ void	rev_rotate(t_stack **lst)
 	*lst = last;
 }
 
-void	pa(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = *a;
-	*a = tmp;
-	write(1, "pa\n", 3);
-}
-
-void	pb(t_stack **a, t_stack **b)
+void	pb(t_stack **a, t_stack **b, t_flags **flags)
 {
 	t_stack	*tmp;
 
@@ -67,5 +56,22 @@ void	pb(t_stack **a, t_stack **b)
 	*a = (*a)->next;
 	tmp->next = *b;
 	*b = tmp;
-	write(1, "pb\n", 3);
+	if ((*flags)->print)
+		write(1, "pb\n", 3);
+	if ((*flags)->bench)
+		(*flags)->bench->totl_pb += 1;
+}
+
+void	pa(t_stack **a, t_stack **b, t_flags **flags)
+{
+	t_stack	*tmp;
+
+	tmp = *b;
+	*b = (*b)->next;
+	tmp->next = *a;
+	*a = tmp;
+	if ((*flags)->print)
+		write(1, "pa\n", 3);
+	if ((*flags)->bench)
+		(*flags)->bench->totl_pa += 1;
 }

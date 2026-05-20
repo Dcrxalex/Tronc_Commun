@@ -3,38 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
+/*   By: ikryvenk <ikryvenk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 16:48:09 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/18 13:54:47 by aldecro          ###   ########.fr       */
+/*   Created: 2026/05/05 12:37:26 by ikryvenk          #+#    #+#             */
+/*   Updated: 2026/05/07 15:26:58 by ikryvenk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int ac, char **av)
+static t_flags	*flags_malloc(t_flags *flags)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_flags	flags;
-	int		start;
+	flags = malloc(sizeof(t_flags));
+	if (!flags)
+		ft_error();
+	flags->disorder = 0;
+	flags->print = 1;
+	flags->bench = NULL;
+	flags_to_zero(&flags);
+	return (flags);
+}
 
-	if (ac < 2)
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_flags	*flags;
+
+	stack_a = NULL;
+	flags = NULL;
+	if (argc == 1)
 		return (0);
-	start = parse_flags(av + 1, &flags);
-	if (!is_valid(av + 1 + start) || is_dup(av + 1 + start))
-		return (1);
-	a = build_stack(av + 1 + start);
-	b = NULL;
-	if (a && !is_sorted(a))
-		sortit(&a, &b, &flags);
-	b = a;
-	while (b)
-	{
-		printf("%d\n", b->value);
-		b = b->next;
-	}
-	free_stack(a);
+	flags = flags_malloc(flags);
+	ft_sort_create(argv + 1, &stack_a, &flags);
+	sortit(&stack_a, &flags);
+	ft_lstclear(&stack_a);
+	free(flags->bench);
+	free(flags);
 	return (0);
 }

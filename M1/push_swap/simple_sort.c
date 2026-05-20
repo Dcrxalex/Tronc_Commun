@@ -3,23 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldecro <decroixalexandre456@gmail.com>    +#+  +:+       +#+        */
+/*   By: aldecroi <aldecroi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:58:58 by aldecro           #+#    #+#             */
-/*   Updated: 2026/05/15 21:48:16 by aldecro          ###   ########.fr       */
+/*   Updated: 2026/05/13 10:30:51 by aldecroi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	simple_sort(t_stack **a, t_stack **b, t_flags **flags)
+{
+	int	size;
+
+	size = stack_size(*a);
+	if (size <= 1)
+		return ;
+	if (stack_size(*a) == 2)
+	{
+		if ((*a)->value > (*a)->next->value)
+			sa(a, flags);
+		return ;
+	}
+	while (stack_size(*a) > 3)
+	{
+		rotate_to_pos(a, find_min_pos(*a), flags);
+		pb(a, b, flags);
+	}
+	sort_three(a, flags);
+	while (*b)
+		pa(a, b, flags);
+}
+
 int	find_min_pos(t_stack *lst)
 {
-	int	pos;
-	int	min;
 	int	i;
+	int	min;
+	int	pos;
 
-	pos = 0;
 	i = 0;
+	pos = 0;
 	min = lst->value;
 	while (lst)
 	{
@@ -37,8 +60,8 @@ int	find_min_pos(t_stack *lst)
 int	find_max_pos(t_stack *lst)
 {
 	int	i;
-	int	pos;
 	int	max;
+	int	pos;
 
 	i = 0;
 	pos = 0;
@@ -56,7 +79,7 @@ int	find_max_pos(t_stack *lst)
 	return (pos);
 }
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_flags **flags)
 {
 	int	top;
 	int	mid;
@@ -65,59 +88,39 @@ void	sort_three(t_stack **a)
 	top = (*a)->value;
 	mid = (*a)->next->value;
 	bot = (*a)->next->next->value;
-	if (top > mid && top < bot)
-		sa(a);
-	else if (top > mid && top > bot && mid < bot)
-		ra(a);
-	else if (mid > top && top > bot)
-		rra(a);
-	else if (top > mid && mid > bot)
+	if (top > mid && top < bot) // 2 1 3
+		sa(a, flags);
+	else if (top > mid && top > bot && mid < bot) // 3 1 2
+		ra(a, flags);
+	else if (top > mid && top > bot && mid > bot) // 3 2 1
 	{
-		sa(a);
-		rra(a);
+		sa(a, flags);
+		rra(a, flags);
 	}
-	else if (mid > bot && bot > top)
+	else if (top < mid && top < bot && mid > bot) // 1 3 2
 	{
-		rra(a);
-		sa(a);
+		sa(a, flags);
+		ra(a, flags);
 	}
+	else if (top < mid && top > bot) // 2 3 1
+		rra(a, flags);
 }
 
-void	sort_b(t_stack **a, t_stack **b)
-{
-	int	pos;
-	int	size;
+// void	sort_b(t_stack **a, t_stack **b, t_flags **flags)
+//{
+//	int	pos;
+//	int	size;
 
-	pos = find_max_pos(*b);
-	size = stack_size(*b);
-	if (pos <= size / 2)
-		while (pos--)
-			rb(b);
-	else
-	{
-		pos = size - pos;
-		while (pos--)
-			rrb(b);
-	}
-	pa(a, b);
-}
-
-void	simple_sort(t_stack **a, t_stack **b)
-{
-	if (stack_size(*a) <= 1)
-		return ;
-	else if (stack_size(*a) == 2)
-	{
-		if ((*a)->value > (*a)->next->value)
-			sa(a);
-		return ;
-	}
-	while (stack_size(*a) > 3)
-	{
-		rotate_to_pos(a, find_min_pos(*a));
-		pb(a, b);
-	}
-	sort_three(a);
-	while (*b)
-		pa(a, b);
-}
+//	pos = find_max_pos(*b);
+//	size = stack_size(*b);
+//	if (pos <= size / 2)
+//		while (pos--)
+//			rb(b, flags);
+//	else
+//	{
+//		pos = size - pos;
+//		while (pos--)
+//			rrb(b, flags);
+//	}
+//	pa(a, b, flags);
+//}
